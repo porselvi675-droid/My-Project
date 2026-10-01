@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Budget Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+        /* Navbar Styling */
+        .navbar {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .nav-links a.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+            padding-bottom: 4px;
+        }
+
+        /* Container Layout */
+        .planner-container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Header Banner Styling */
+        .header-banner {
+            background-color: #2563eb;
+            color: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-banner h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .header-banner p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Card Styling */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Inputs Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+        .form-control:focus {
+            border-color: #2563eb;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <div class="navbar">
+        <div class="logo"><i class="fa-solid fa-wallet"></i> PocketSmart</div>
+        <div class="nav-links">
+            <a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+            <a href="/home_planner"><i class="fa-solid fa-house"></i> Home Budget</a>
+            <a href="/party_planner" class="active"><i class="fa-solid fa-glass-cheers"></i> Party Budget</a>
+            <a href="/jewelry_planner"><i class="fa-solid fa-gem"></i> Jewelry Budget</a>
+            <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="planner-container">
+        
+        <div class="header-banner">
+            <h1>Party Budget Planner</h1>
+            <p>Create a customized budget plan for your party event</p>
+        </div>
+
+        <form action="/party_result" method="POST">
+            
+            <!-- Budget Card -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-dollar-sign" style="color: #2563eb;"></i> Budget Details
+                </div>
+                <div class="form-group">
+                    <label for="total_budget">Total Budget ($)</label>
+                    <input type="number" id="total_budget" name="total_budget" class="form-control" placeholder="5000" required>
+                </div>
+            </div>
+
+            <!-- Event Card -->
+            <div class="card">
+                <div class="card-title">
+                    <i class="fa-solid fa-utensils" style="color: #2563eb;"></i> Event Details
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guest_count">Number of Guests</label>
+                        <input type="number" id="guest_count" name="guest_count" class="form-control" placeholder="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_type">Venue Type</label>
+                        <select id="venue_type" name="venue_type" class="form-control">
+                            <option value="hall">Banquet Hall</option>
+                            <option value="outdoor">Outdoor / Garden</option>
+                            <option value="home">Home Party</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Generate Budget Plan</button>
+        </form>
+    </div>
+
+</body>
+</html>
